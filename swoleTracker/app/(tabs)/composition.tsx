@@ -1,10 +1,9 @@
-import { StyleSheet } from 'react-native';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import BodyCompositionForm from '../../components/BodyCompositionForm';
 
-export default function TabTwoScreen() {
+const TabTwoScreen = () => {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
@@ -15,28 +14,40 @@ export default function TabTwoScreen() {
       });
     }
   }, [isFocused, navigation]);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Body Composition</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/composition.tsx" />
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Body Composition</Text>
+      </View>
+      <View style={styles.form}>
+          <BodyCompositionForm />
+      </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+      fontSize: 45,
+      fontWeight: 'bold',
+      color: 'white',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  titleContainer: {
+    width: '100%',
+    height: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  form: {
+    width: '90%',
+    height: '60%',
   },
 });
+
+export default TabTwoScreen;

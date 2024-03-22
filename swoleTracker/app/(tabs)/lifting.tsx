@@ -11,7 +11,7 @@ export default function TabFourScreen() {
   useEffect(() => {
     if (isFocused) {
       navigation.setOptions({
-        title: 'Weight Lifting', // Change the title dynamically
+        title: 'Weightlifting', // Change the title dynamically
       });
     }
   }, [isFocused, navigation]);
